@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#define DATA_SIZE 4096
+#define DATA_SIZE 2048
 using namespace std;
 
 vector<int> numbers;
@@ -20,7 +20,7 @@ int main()
 {
 	srand((unsigned)time(NULL));
 	for(int i = 0; i < DATA_SIZE; i++){
-		numbers.push_back(rand() % 100 - 100);
+		numbers.push_back(rand() % 200 - 100);
 	}
 	clock_t start = clock();
 	int pairs = count();
