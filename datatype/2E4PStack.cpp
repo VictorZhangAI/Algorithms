@@ -9,7 +9,9 @@ int limit = 0;
 void capacity(int cap)
 {
 	limit = cap;
-	s = (char**)malloc((sizeof(char)) * limit * 100);
+	s = (char**)malloc((sizeof(char)) * limit);
+	for(int i = 0; i < limit; i++)
+		s[i] = (char*)malloc(100 * sizeof(char));
 }
 
 bool isEmpty()
@@ -20,10 +22,13 @@ bool isEmpty()
 void push(char *item)
 {
 	if(N == (limit - 1)){
-		s = (char**)realloc(s, (sizeof(char)) * limit * 2 * 100);
+		s = (char**)realloc(s, (sizeof(char*)) * limit * 2);
+		for(int i = 0; i < 2 * limit; i++)
+			s[i] = (char*)malloc(sizeof(char) * 100);
 		limit *= 2;
 	}
-	s[N++] = item;
+	s[N] = item;
+	N++;
 }
 
 char *pop()
@@ -31,7 +36,9 @@ char *pop()
 	char *item = s[--N];
 	s[N] = NULL;
 	if(N > 0 && N == limit / 4){
-		s = (char**)realloc(s, (sizeof(char)) * limit / 2 * 100);
+		s = (char**)realloc(s, (sizeof(char*)) * limit / 2);
+		for(int i = 0; i < limit / 2; i++)
+			s[i] = (char*)malloc(sizeof(char) * 100);
 		limit /= 2;
 	}
 	return item;

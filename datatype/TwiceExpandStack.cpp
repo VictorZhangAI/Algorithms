@@ -1,4 +1,4 @@
-/*A Stack that could expand or reduce its space*/
+/*A Stack that could expand its space*/
 
 #include<bits/stdc++.h>
 
@@ -9,7 +9,9 @@ int limit = 0;
 void capacity(int cap)
 {
 	limit = cap;
-	s = (char**)malloc((sizeof(char)) * limit * 100);
+	s = (char**)malloc((sizeof(char)) * limit);
+	for(int i = 0; i < limit; i++)
+		s[i] = (char*)malloc(100 * sizeof(char));
 }
 
 bool isEmpty()
@@ -20,7 +22,9 @@ bool isEmpty()
 void push(char *item)
 {
 	if(N == (limit - 1)){
-		s = (char**)realloc(s, (sizeof(char)) * limit * 2 * 100);
+		s = (char**)realloc(s, (sizeof(char)) * limit * 2);
+		for(int i = 0; i < limit * 2; i++)
+			s[i] = (char*)malloc(100 * sizeof(char));
 		limit *= 2;
 	}
 	s[N++] = item;

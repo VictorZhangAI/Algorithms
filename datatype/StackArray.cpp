@@ -7,7 +7,9 @@ int N = 0;
 
 void capacity(int cap)
 {
-	s = (char**)malloc((sizeof(char)) * cap * 100);
+	s = (char**)malloc((sizeof(char*)) * cap);
+	for(int i = 0; i < cap; i++)
+		s[i] = (char*)malloc(100 * sizeof(char));
 }
 
 bool isEmpty()

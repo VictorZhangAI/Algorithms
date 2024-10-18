@@ -11,7 +11,9 @@ int limit = 0;
 void capacity(int cap)
 {
 	limit = cap;
-	s = (char**)malloc((sizeof(char)) * limit * 100);
+	s = (char**)malloc((sizeof(char*)) * limit);
+	for(int i = 0; i < limit; i++)
+		s[i] = (char*)malloc(sizeof(char) * 100);
 }
 
 bool isEmpty()
@@ -22,7 +24,9 @@ bool isEmpty()
 void enqueue(char *item)
 {
 	if(last == (limit - 1)){
-		s = (char**)realloc(s, (sizeof(char)) * limit * 2 * 100);
+		s = (char**)realloc(s, (sizeof(char*)) * limit * 2);
+		for(int i = 0; i < limit * 2; i++)
+			s[i] = (char*)malloc(sizeof(char) * 100);
 		limit *= 2;
 	}
 	s[last++] = item;
@@ -35,7 +39,9 @@ char *dequeue()
 		first = last = 0;
 	s[first-1] = NULL;
 	if(last > 0 && last == limit / 4){
-		s = (char**)realloc(s, (sizeof(char)) * limit / 2 * 100);
+		s = (char**)realloc(s, (sizeof(char*)) * limit / 2);
+		for(int i = 0; i < limit / 2; i++)
+			s[i] = (char*)malloc(100 * sizeof(char));
 		limit /= 2;
 	}
 	return item;
