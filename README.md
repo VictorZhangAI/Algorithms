@@ -1,2 +1,5 @@
 # Algorithms
-Code from Princeton algorithm courses.
+
+《算法》对应的代码，使用C++语言进行了重构。图算法的部分抄了OI wiki的内容，最好还是别参考了。
+
+讲真，我还是蛮喜欢左旋红黑树和3-way Trie的
